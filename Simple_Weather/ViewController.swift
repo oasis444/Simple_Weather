@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var minTemp: UILabel!
     @IBOutlet weak var weatherStackView: UIStackView!
     
+    let appID = "Input Your Api Key"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,7 +31,7 @@ class ViewController: UIViewController {
     }
     
     private func getCurrentWeather(cityName: String) {
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=1614f1022e19d277777e18cfcc5d978e") else { return }
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=\(appID)") else { return }
         let session = URLSession(configuration: .default)
         session.dataTask(with: url) { [weak self] data, response, error in
             let successRange = (200..<300)
